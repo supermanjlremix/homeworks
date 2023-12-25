@@ -1,0 +1,18 @@
+tr,td,th {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+td {
+    text-align: center;
+    padding: 0 10px 0;
+}
+
+.student {
+    vertical-align: top;
+    text-align: start;
+}
