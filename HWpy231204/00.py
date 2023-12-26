@@ -1,15 +1,15 @@
 # 1. Запросите у пользователя год, месяц и число его рождения, и выведите эту дату в формате "дд.мм.гггг"
 
-while True:
-    try:
-        year = int(input('Введите год рождения: '))
-        month = int(input('Введите месяц рождения: '))
-        day = int(input('Введите день рождения: '))
-        if 1 <= month <= 12 and 1 <= day <= 31:
-            text = "Дата вашего рождения: %02d.%02d.%04d г."
-            print(text % (day,month,year))
-            exit()
-        else:
-            print("Вы не верно ввели день/месяц")
-    except ValueError:
-        print("Введите цифры! Попробуйте снова")
+try:
+    year = int(input('Введите год рождения: '))
+    month = int(input('Введите месяц рождения: '))
+    day = int(input('Введите день рождения: '))
+except ValueError:
+    print("Введите цифры! Попробуйте снова")
+    exit()
+
+if 1 <= month <= 12 and 1 <= day <= 31:
+    text = "Дата вашего рождения: %02d.%02d.%04d г."
+    print(text % (day,month,year))
+else:
+    print("Вы не верно ввели день/месяц")

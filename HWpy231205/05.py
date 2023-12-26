@@ -2,33 +2,27 @@
 Всем своим знакомым он дал строки такого вида (например, `гр@оо@лк@оц@ва`), чтобы посмотреть, кому удастся написать программу, которая очищает 
 строки от лишнего и печатает их в чистом виде (например, `голова`). Напишите такую программу."""
 
-while True:
-    try:
-        sentence = input("Введите предложение: ")
-        key = "@"
-        symbols_list = []
 
-        for symbol in sentence:
-            if sentence[0] == key:
-                sentence = sentence[1:]
-            else:
-                symbols_list += symbol
+sentence = input("Введите предложение: ")
+key = input("Введите символ удаления: ")
+symbols_list = []
 
-        for symbol in symbols_list:
-            if symbol == key:
-                symbols_list.pop(symbols_list.index(symbol)-1)
-                symbols_list.pop(symbols_list.index(symbol))
+for symbol in sentence:
+    if sentence[0] == key:
+        sentence = sentence[1:]
+    else:
+        symbols_list += symbol
 
-        result = ""
-        for symbol in symbols_list:
-            result += symbol
+for symbol in symbols_list:
+    if symbol == key:
+        symbols_list.pop(symbols_list.index(symbol)-1)
+        symbols_list.pop(symbols_list.index(symbol))
 
-        if len(result) == 0:
-            print("Ваш результат пустая строка")
-            exit()
-        else:
-            print("Результат:", result)
-            exit()
+result = ""
+for symbol in symbols_list:
+    result += symbol
 
-    except Exception:
-        print("Непредвиденная ошибка")
+if len(result) == 0:
+    print("Ваш результат пустая строка")
+else:
+    print("Результат:", result)
