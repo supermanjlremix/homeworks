@@ -4,6 +4,7 @@ try:
     user_list = [float(number) for number in input("Введите данные через запятую для создания списка: ").split(",")]
 except ValueError:
     print("Введите цифры!")
+    exit()
 #VN: Нет выхода при возникновении исключения или ветки else
 
 max_index = user_list.index(max(user_list))
