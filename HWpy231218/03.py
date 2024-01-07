@@ -1,4 +1,5 @@
 def show_time(hours, minutes="00", seconds="00"):
+    #VN: зачем строковые     ^^^^ значения ^^^^ ? почему не просто 0?
     try:
         hours = int(hours) 
         minutes = int(minutes) 
@@ -6,6 +7,8 @@ def show_time(hours, minutes="00", seconds="00"):
     except ValueError:
         print("Вы неправильно ввели количество чч:мм:сс")
         exit()
+
+    #VN: ^^^ здесь те же замечания, что и к предыдущим задачам
     
     if seconds // 60 != 0:
         minutes += seconds // 60
@@ -18,6 +21,7 @@ def show_time(hours, minutes="00", seconds="00"):
     hours = hours % 24
 
     text = 'Время: "%02d:%02d:%02d"'
+    #VN:    ^^^^^^^^ это лишнее
 
 
     time = text % (abs(hours), abs(minutes), abs(seconds))
