@@ -4,13 +4,8 @@ def get_sum_numbers(number=0):
     count = 0
 
     for number in numbers:
-        try:
-            count += int(number)
-        except ValueError:
-            print("Введенное значение не является целым числом")
-            exit()
-            #VN: функция не должна решать, завершать ли программу. это просто функция
-            # print внутри функции - это тоже побочный эффект, он не нужен
+        count += int(number)
+
 
     return count
 
