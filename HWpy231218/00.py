@@ -1,15 +1,18 @@
-def get_sum_numbers(number=0):
-    numbers = str(number)
-    numbers = list(numbers)
-    count = 0
-
-    for number in numbers:
-        count += int(number)
+def get_sum_numbers(number1, number2, number3):
+    result = str(number1) + str(number2) + str(number3)
+    return result
 
 
-    return count
+number1 = input("Введите первое число: ")
+number2 = input("Введите второе число: ")
+number3 = input("Введите третье число: ")
 
-print("Сумма чисел равна:", get_sum_numbers("123"))
+try:
+    number1 = int(number1)
+    number2 = int(number2)
+    number3 = int(number3)
+except ValueError:
+    print("Значение нельзя преобразовать в число")
+    exit()
 
-#VN: Не выполнено условие: Написать функцию, которая принимает три отдельные цифры...
-# т.е. вызов вашей функции должен быть такой: get_sum_numbers(1, 2, 3), а результатом - число 123
+print("Результат:", get_sum_numbers(number1, number2, number3))
