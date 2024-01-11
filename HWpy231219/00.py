@@ -3,29 +3,30 @@ from datetime import date
 def newEmployee(fullName: str, birthDate: str, position: str, salary: int) -> dict:
     try:
         firstName, lastName = fullName.split()
-        id = len(database)
-        employee = {
-                    "id": id,
-                    "firstName": firstName,
-                    "lastName": lastName,
-                    "birthDate": birthDate,
-                    "hiredDate": date.today(),
-                    "firedDate": None,
-                    "position": position,
-                    "salary": salary
-                }
-        database.append(employee)
-        return {"id": id, "errorDescription": None}
     except Exception as errorDescription:
         return {"id": -1, "errorDescription": str(errorDescription)}
+    id = len(database)
+    employee = {
+                "id": id,
+                "firstName": firstName,
+                "lastName": lastName,
+                "birthDate": birthDate,
+                "hiredDate": date.today(),
+                "firedDate": None,
+                "position": position,
+                "salary": salary
+            }
+    database.append(employee)
+    return {"id": id, "errorDescription": None}
+    
 
 
 def fireEmployee(id: int) -> dict:
     try:
         database[id].update({"firedDate": date.today()})        
-        return {"id": id, "errorDescription": None}
     except Exception as errorDescription:
         return {"id": -1, "errorDescription": str(errorDescription)}
+    return {"id": id, "errorDescription": None}
 
 
 def getEmployeeId(name: str) -> int|set:
@@ -57,21 +58,21 @@ def showFiredEmployees() -> list:
 
 
 def getSalaryStats() -> dict:
+    salaries = []
+    for employee in database:
+        if employee["firedDate"] is None:
+            salaries += [employee["salary"]]
+    salaries = sorted(salaries)
     try:
-        salaries = []
-        for employee in database:
-            if employee["firedDate"] is None:
-                salaries += [employee["salary"]]
-        salaries = sorted(salaries)
         average_salary = sum(salaries)/len(salaries)
-        if len(salaries) % 2 == 0:
-            median_salary = (salaries[int(len(salaries)/2)] + salaries[int(len(salaries)/2)-1]) / 2
-        else:
-            median_salary = salaries[int(len(salaries)/2)]
-        stats = {"Общий размер зарплатного фонда компании": sum(salaries), "Максимальная зарплата": max(salaries), "Минимальная зарплата": min(salaries), "Средняя зарплата": average_salary, "Медианная зарплата": median_salary}
-        return stats
     except ZeroDivisionError as errorDescription:
         return {"id": -1, "errorDescription": str(errorDescription)}
+    if len(salaries) % 2 == 0:
+            median_salary = (salaries[int(len(salaries)/2)] + salaries[int(len(salaries)/2)-1]) / 2
+    else:
+        median_salary = salaries[int(len(salaries)/2)]
+    stats = {"Общий размер зарплатного фонда компании": sum(salaries), "Максимальная зарплата": max(salaries), "Минимальная зарплата": min(salaries), "Средняя зарплата": average_salary, "Медианная зарплата": median_salary}
+    return stats
 
 
 database = []
