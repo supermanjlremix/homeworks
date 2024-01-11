@@ -5,7 +5,6 @@ try:
 except ValueError:
     print("Введите цифры!")
     exit()
-#VN: Нет выхода при возникновении исключения или ветки else
 
 max_index = user_list.index(max(user_list))
 min_index = user_list.index(min(user_list))
