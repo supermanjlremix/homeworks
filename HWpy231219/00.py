@@ -40,7 +40,10 @@ def getEmployeeId(name: str) -> int|set:
 
 
 def getEmployeeRecord(id: int) -> dict:
-    return database[id]
+    try:
+        return database[id]
+    except Exception as errorDescription:
+        return {"id": -1, "errorDescription": str(errorDescription)}
 
 
 def showFiredEmployees() -> list:
@@ -48,23 +51,27 @@ def showFiredEmployees() -> list:
     for employee in database:
         if employee["firedDate"] is not None:
             firedEmployees += [employee]
-            break
-    return firedEmployees
+    if firedEmployees:
+        return firedEmployees
+    return -1
 
 
 def getSalaryStats() -> dict:
-    salaries = []
-    for employee in database:
-        if employee["firedDate"] is None:
-            salaries += [employee["salary"]]
-    salaries = sorted(salaries)
-    average_salary = sum(salaries)/len(salaries)
-    if len(salaries) % 2 == 0:
-        median_salary = (salaries[int(len(salaries)/2)] + salaries[int(len(salaries)/2)-1]) / 2
-    else:
-        median_salary = salaries[int(len(salaries)/2)]
-    stats = {"Общий размер зарплатного фонда компании": sum(salaries), "Максимальная зарплата": max(salaries), "Минимальная зарплата": min(salaries), "Средняя зарплата": average_salary, "Медианная зарплата": median_salary}
-    return stats
+    try:
+        salaries = []
+        for employee in database:
+            if employee["firedDate"] is None:
+                salaries += [employee["salary"]]
+        salaries = sorted(salaries)
+        average_salary = sum(salaries)/len(salaries)
+        if len(salaries) % 2 == 0:
+            median_salary = (salaries[int(len(salaries)/2)] + salaries[int(len(salaries)/2)-1]) / 2
+        else:
+            median_salary = salaries[int(len(salaries)/2)]
+        stats = {"Общий размер зарплатного фонда компании": sum(salaries), "Максимальная зарплата": max(salaries), "Минимальная зарплата": min(salaries), "Средняя зарплата": average_salary, "Медианная зарплата": median_salary}
+        return stats
+    except ZeroDivisionError as errorDescription:
+        return {"id": -1, "errorDescription": str(errorDescription)}
 
 
 database = []
