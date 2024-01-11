@@ -1,8 +1,9 @@
-def get_size_area(x, y=None):
-    if y is None:
+def get_size_area(x: int|float, y:int|float=None) -> int|float:
+    if y == None:
         y = x
+    size_area = x * y
+    return size_area
 
-    return x * y
 
-print("Площадь равна:", get_size_area("2.4"))
-print("Площадь равна:", get_size_area(2))
+print("Площадь равна:", get_size_area(2, 5))
+print("Площадь равна:", get_size_area(2.4))
