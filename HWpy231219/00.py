@@ -72,6 +72,8 @@ def getSalaryStats() -> dict:
     else:
         median_salary = salaries[int(len(salaries)/2)]
     stats = {"Общий размер зарплатного фонда компании": sum(salaries), "Максимальная зарплата": max(salaries), "Минимальная зарплата": min(salaries), "Средняя зарплата": average_salary, "Медианная зарплата": median_salary}
+    #VN: лучше, чтобы ключи были идентификаторами английском, а не текстом на русском. Например:
+    #       {"total": sum(salaries), "max": max(salaries), "min": min(salaries), "average": average_salary, "median": median_salary}
     return stats
 
 
