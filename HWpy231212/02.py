@@ -30,6 +30,10 @@ for word in user_list:
 
 output_text = " ".join(user_list)
 
-my_file = open('output.txt','w', encoding="utf8")  
-my_file.write(output_text) 
-my_file.close()
+try:    
+    my_file = open('output.txt','w', encoding="utf8")  
+    my_file.write(output_text)
+except PermissionError:
+    print("Permission denied") 
+finally:
+    my_file.close()
