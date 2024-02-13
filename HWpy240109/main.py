@@ -22,3 +22,13 @@ if __name__ == "__main__":
           average.get_average_age(data_students))
     print("Cредний балл всех студентов на курсе 'Python':", 
           average.get_average_python(data_students))
+
+#VN: Неплохо, но раз уж такая пьянка пошла с модулями, то функции получились очень узкоспециализированные.
+# Лучше было бы сделать, чтобы можно было вызывать их так:
+#   average.get_average_grade(data_students, course='Python'))
+# и так:
+#   average.get_average_grade(data_students))
+# И то же с htmlstudents:
+#   get_students(data_students, course='Html'))
+# или:
+#   get_students(data_students, name='Barnes'))
