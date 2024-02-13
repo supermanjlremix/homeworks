@@ -8,13 +8,13 @@ def get_average_age(data_students: tuple) -> float:
     return average_age
 
 
-def get_average_python(data_students: tuple) -> float:
+def get_average_python(data_students: tuple, course: str) -> float:
     python_students = filter(
-        lambda student: student["course"] == "Python", data_students)
+        lambda student: student["course"] == course, data_students)
     python_students_number = len(
         list(
             filter(
-                lambda student: student["course"] == "Python", 
+                lambda student: student["course"] == course, 
                 data_students)
         )
     )

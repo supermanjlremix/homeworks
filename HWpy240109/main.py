@@ -17,8 +17,8 @@ data_students = (
 
 if __name__ == "__main__":
     print(names.get_students_list(data_students))
-    print(htmlstudents.get_html_students(data_students))
+    print(htmlstudents.get_html_students(data_students, 'HTML'))
     print("Cредний возраст всех студентов:", 
           average.get_average_age(data_students))
     print("Cредний балл всех студентов на курсе 'Python':", 
-          average.get_average_python(data_students))
+          average.get_average_python(data_students, 'Python'))
