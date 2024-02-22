@@ -1,0 +1,5 @@
+number = input("Введите число: ")
+max_digit = max(number)
+min_digit = min(number)
+print(f"Наибольшая цифра: {max_digit}")
+print(f"Наибольшая цифра: {min_digit}")
