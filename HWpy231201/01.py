@@ -8,7 +8,9 @@ def fibonacci(N: int) -> list:
 
 try:
     N = int(input("Введите количество чисел Фибоначчи: "))
+    #VN: input не нужен в try
 except Exception as error:
+    #VN: ^^^^^^^ неизбирательный обработчик может принести проблемы. Указывайте конкретное исключение, которое ловите
     print(error)
     exit()
 
